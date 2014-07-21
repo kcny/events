@@ -1,6 +1,6 @@
 class EventsController < ApplicationController
 	def index
-		@events = Event.all
+		@events = Event.upcoming
 	end
 
 	def show
@@ -12,6 +12,7 @@ class EventsController < ApplicationController
 	end
 
 	def update
+		@event = Event.find(params[:id])
 		@event.update(event_params)
 		redirect_to @event
 	end
