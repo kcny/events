@@ -23,13 +23,20 @@
   <p>
     <%= pluralize(@event.capacity, 'spot') %>
   </p>
+
+  <%= link_to "Who's Registered?", event_registrations_path(@event) %>
   
   <footer>
+  <%= register_link(@event) %>
     <nav>
       <%= link_to 'Edit', edit_event_path(@event), class: 'button' %>
       <%= link_to 'Delete', @event, 
                   class: 'button',
                   method: :delete, data: { confirm: 'Are you sure?' } %>
+
+    <p>
+      (<%= pluralize(@event.spots_left, 'spot') %> available)
+    </p>              
     </nav>
   </footer>
 </article>
